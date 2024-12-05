@@ -7,6 +7,11 @@ compile_sass = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
+title = "in-byte-order"
+theme = "apollo"
+taxonomies = [{ name = "tags" }]
+
+
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
@@ -14,3 +19,18 @@ highlight_code = true
 
 [extra]
 # Put all your custom variables here
+theme = "auto"
+socials = [
+    # Configure socials here
+    { name = "twitter", url = "https://twitter.com/not_matthias", icon = "twitter" },
+    { name = "github", url = "https://github.com/not-matthias/", icon = "github" },
+]
+menu = [
+    # Configure menu bar here
+    { name = "/posts", url = "/posts", weight = 1 },
+    { name = "/projects", url = "/projects", weight = 2 },
+    { name = "/about", url = "/about", weight = 3 },
+    { name = "/tags", url = "/tags", weight = 4 },
+]
+
+# See this for more options: https://github.com/not-matthias/apollo/blob/main/config.toml#L14
