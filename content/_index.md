@@ -10,7 +10,26 @@ I’ve had the opportunity to work with both local and international companies, 
 
 Currently, I’m a Rust developer at [Cosdata](https://www.cosdata.io/), where I’m deepening my expertise in low-level software development.
 
-# Skills:
+# Education
+
+**_Postgraduate Medical Fellowship_**
+
+> The High Committee of Health Specialities <br />
+> August 2021 - Current, Egypt
+
+**_Bachelor of Medicine and Surgery_**
+
+> Benha College of Human Medicine <br />
+> September 2013 - February 2021, Benha, Egypt
+
+**_Full Stack Developer_**
+
+> freeCodeCamp.org <br />
+> December 2018 - May 2020, ONLINE - freeCodeCamp.org
+
+---
+
+# Skills
 
 - Programming Languages (Typescript, Javascript, Rust)
 - Web Design & Development (HTML, CSS, SASS, ...)
@@ -20,6 +39,8 @@ Currently, I’m a Rust developer at [Cosdata](https://www.cosdata.io/), where I
 - Docker Containerization
 - Software Security & Testing
 - Git
+
+---
 
 # Professional Experience
 
@@ -40,7 +61,7 @@ Currently, I’m a Rust developer at [Cosdata](https://www.cosdata.io/), where I
 **HAD For Communications & IT**
 
 > _Senior Full-Stack Engineer_ <br/>
-> March 2024 - Current, KSA, Remote
+> March 2024 - December 2024, KSA, Remote, Contract
 
 - Built new UI components and features.
 - Improved **Postgresql tables’ structure** which lead to less
@@ -88,6 +109,26 @@ Currently, I’m a Rust developer at [Cosdata](https://www.cosdata.io/), where I
   storage, easier logic, and fewer computations.
 - **Reviewed** code added by other developers.
 - **Mentored** Junior developers.
+
+---
+
+# Activities
+
+**_Hult Prize_**
+
+> Team Leader <br />
+> December 2017 - Benha University, Egypt
+
+Led a team that qualified for the regional competition by developing a
+solution addressing the lack of healthy toilets in India.
+
+**_Benha Charitable Pharmacy (BCP)_**
+
+> Member <br />
+> Faculty of Medicine Benha University
+
+Assisted in providing medical aid to underserved communities and
+organized educational and social events for students.
 
 <br />
 <br />
