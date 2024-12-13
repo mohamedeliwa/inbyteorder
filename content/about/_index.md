@@ -1,6 +1,6 @@
 +++
-title = "About"
-path = "about"
+title = "About me"
+template = "about.html"
 +++
 
 Hi there! I’m a doctor who transitioned into software engineering, with five years of experience in full-stack web development using TypeScript and JavaScript.
