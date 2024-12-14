@@ -27,24 +27,22 @@
             {% endfor -%}
         </section> 
         <hr />
-        <section class="resume-section experience">
-            <h2 class="section-title">Skills</h2>
+        <section class="">
+            <h2 class="">Skills</h2>
             {%- for page in section.pages | filter(attribute="extra.type", value="Skills") %}
-                <div class="education-item">
+                <div class="">
                     {{page.content | safe}}
                 </div>
             {% endfor -%}
         </section> 
         <hr />
-        <section class="resume-section experience">
-            <h2 class="section-title">Activities</h2>
+        <section class="">
+            <h2 class="">Activities</h2>
             {%- for page in section.pages | filter(attribute="extra.type", value="Activities") %}
-                <div class="education-item">
-                    <div class="education-header">
-                    <h3 class="degree">{{page.extra.role}}</h3>
-                    <span class="university-name">{{page.extra.org}}</span>
-                    </div>
-                    {{page.content | safe}}
+                <div class="">
+                    <h3 class="">{{page.extra.org}} / {{page.extra.role}}</h3>
+                    <span class="">{{page.extra.place}}</span>
+                    <span>{{page.content | safe}}</span>
                 </div>
             {% endfor -%}
         </section> 
