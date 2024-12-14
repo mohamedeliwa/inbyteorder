@@ -4,20 +4,7 @@
     <link href="/about.css" rel="stylesheet" />
     {{ post_macros::home_page(section=section) }}
     <main>
-        <section class="education_section">
-            <h2 class="title">Education</h2>
-            {%- for page in section.pages | filter(attribute="extra.type", value="Education") | reverse %}        
-                <div class="education_item">
-                    <p class="header"><span class="certificate">{{page.extra.certificate}}</span> / <span class="school">{{page.extra.school}}</span></p>
-                    <p  class="sub_header">
-                        <span class="time">{{page.extra.from}} - {{page.extra.to}},</span>
-                        <span class="place">{{page.extra.place}}</span>
-                    </p>
-                    <span class="content">{{page.content | safe}}</span>
-                </div>
-            {% endfor -%}
-        </section> 
-        <hr />
+        
         <section class="experience_section">
             <h2 class="title">Professional Experience</h2>
             {%- for page in section.pages | filter(attribute="extra.type", value="Professional Experience") %}
@@ -28,6 +15,20 @@
                         <span class="place">{{page.extra.place}}</span>
                     </p>
                     <span class="content">{{page.content | safe}}</span>
+                </div>
+            {% endfor -%}
+        </section> 
+        <hr />
+        <section class="education_section">
+            <h2 class="title">Education</h2>
+            {%- for page in section.pages | filter(attribute="extra.type", value="Education") | reverse %}        
+                <div class="education_item">
+                    <p class="header"><span class="certificate">{{page.extra.certificate}}</span> / <span class="school">{{page.extra.school}}</span></p>
+                    <p  class="sub_header">
+                        <span class="time">{{page.extra.from}} - {{page.extra.to}},</span>
+                        <span class="place">{{page.extra.place}}</span>
+                    </p>
+                    <!-- <span class="content">{{page.content | safe}}</span> -->
                 </div>
             {% endfor -%}
         </section> 
@@ -54,5 +55,8 @@
                 </div>
             {% endfor -%}
         </section> 
+        <br />
+        <br />
+        <br />
     </main>
 {% endblock main_content %}
