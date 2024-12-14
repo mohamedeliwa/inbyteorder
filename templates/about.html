@@ -14,22 +14,19 @@
                 </div>
             {% endfor -%}
         </section> 
-
+        <hr />
         <section class="">
             <h2 class="">Professional Experience</h2>
             {%- for page in section.pages | filter(attribute="extra.type", value="Professional Experience") %}
                 <div class="">
-                    <div class="">
-                    <h3 class="">{{page.extra.role}}</h3>
-                    <span class="">{{page.extra.company}}</span>
-                    <span class="">Graduated: {{page.extra.to}}</span>
-                    </div>
-                    <p class="">Major: Computer Science</p>
-                    <p class="">Graduated with Honors</p>
+                    <h3 class="">{{page.extra.company}} / {{page.extra.role}}</h3>
+                    <span class="">{{page.extra.from}} - {{page.extra.to}},</span>
+                    <span class="">{{page.extra.place}}</span>
+                    <span>{{page.content | safe}}</span>
                 </div>
             {% endfor -%}
         </section> 
-
+        <hr />
         <section class="resume-section experience">
             <h2 class="section-title">Skills</h2>
             {%- for page in section.pages | filter(attribute="extra.type", value="Skills") %}
@@ -38,7 +35,7 @@
                 </div>
             {% endfor -%}
         </section> 
-
+        <hr />
         <section class="resume-section experience">
             <h2 class="section-title">Activities</h2>
             {%- for page in section.pages | filter(attribute="extra.type", value="Activities") %}
