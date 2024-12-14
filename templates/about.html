@@ -1,82 +1,46 @@
 {% extends "base.html" %}
 
 {% block main_content %}
-    <!-- {{ post_macros::home_page(section=section) }} -->
+    {# post_macros::home_page(section=section) #}
     <link href="/about.css" rel="stylesheet" />
     <main>
-        <!-- <div class="cards"> -->
-            {%- for page in section.pages %}
-                <!-- <div class="card">
-                    {% if page.extra.local_image %}
-                        <img class="card-image" alt={{ page.extra.local_image }} src="{{ get_url(path=page.extra.local_image) }}" />
-                    {% elif page.extra.remote_image %}
-                        <img class="card-image" alt={{ page.extra.remote_image }} src="{{ page.extra.remote_image }}" />
-                    {% else %}
-                        <div class="card-image-placeholder"></div>
-                    {% endif %}
-        
-                    <div class="card-info">
-                        <h1 class="card-title">
-                            {% if page.extra.link_to %}
-                            <a href={{ page.extra.link_to }}>{{page.title}}</a>
-                            {% else %}
-                            <a href={{ page.permalink }}>{{page.title}}</a>
-                            {% endif %}
-                        </h1>
-        
-                        <div class="meta">
-                            {%- if page.date %}
-                                <time>{{ page.date | date(format="%Y-%m-%d") }}</time>
-                            {% endif -%}
-                            {% if page.draft %}
-                                <span class="draft-label">DRAFT</span>
-                            {% endif %}
-                        </div>
-        
-                        <div class="card-description">
-                            {% if page.description %}
-                                {{ page.description }}
-                            {% endif %}
-                        </div>
+        {%- for page in section.pages %}
+            <section class="resume-section experience">
+                <h2 class="section-title">Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                    <h3 class="job-title">Software Developer</h3>
+                    <span class="company-name">ABC Tech Inc.</span>
+                    <span class="dates">Jan 2020 - Present</span>
                     </div>
-                </div> -->
-                <section class="resume-section experience">
-                    <h2 class="section-title">Experience</h2>
-                    
-                    <div class="experience-item">
-                      <div class="experience-header">
-                        <h3 class="job-title">Software Developer</h3>
-                        <span class="company-name">ABC Tech Inc.</span>
-                        <span class="dates">Jan 2020 - Present</span>
-                      </div>
-                      <ul class="responsibilities">
-                        <li>Developed and maintained web applications using JavaScript and React</li>
-                        <li>Collaborated with design and product teams to create seamless user experiences</li>
-                        <li>Led a team of 5 developers in building a SaaS product</li>
-                      </ul>
+                    <ul class="responsibilities">
+                    <li>Developed and maintained web applications using JavaScript and React</li>
+                    <li>Collaborated with design and product teams to create seamless user experiences</li>
+                    <li>Led a team of 5 developers in building a SaaS product</li>
+                    </ul>
+                </div>
+                
+                <!-- Add more experience items as needed -->
+                
+                </section>
+    
+            <section class="resume-section education">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                    <h3 class="degree">Bachelor of Science in Computer Science</h3>
+                    <span class="university-name">University of XYZ</span>
+                    <span class="dates">Graduated: 2019</span>
                     </div>
-                  
-                    <!-- Add more experience items as needed -->
-                    
-                  </section>
-        
-                <section class="resume-section education">
-                    <h2 class="section-title">Education</h2>
-                  
-                    <div class="education-item">
-                      <div class="education-header">
-                        <h3 class="degree">Bachelor of Science in Computer Science</h3>
-                        <span class="university-name">University of XYZ</span>
-                        <span class="dates">Graduated: 2019</span>
-                      </div>
-                      <p class="major">Major: Computer Science</p>
-                      <p class="honors">Graduated with Honors</p>
-                    </div>
-                  
-                    <!-- Add more education items as needed -->
-                  
-                  </section>
-            {% endfor -%}
-        <!-- </div> -->
+                    <p class="major">Major: Computer Science</p>
+                    <p class="honors">Graduated with Honors</p>
+                </div>
+                
+                <!-- Add more education items as needed -->
+                
+                </section>
+        {% endfor -%}
     </main>
 {% endblock main_content %}
