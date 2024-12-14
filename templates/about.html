@@ -31,11 +31,11 @@
             {% endfor -%}
         </section> 
         <hr />
-        <section class="">
-            <h2 class="">Skills</h2>
+        <section class="skills_section">
+            <h2 class="title">Skills</h2>
             {%- for page in section.pages | filter(attribute="extra.type", value="Skills") %}
-                <div class="">
-                    {{page.content | safe}}
+                <div class="skills_item">
+                    <span class="content">{{page.content | safe}}</span>
                 </div>
             {% endfor -%}
         </section> 
