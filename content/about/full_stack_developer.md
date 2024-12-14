@@ -2,7 +2,7 @@
 title = ""
 subtitle = ""
 description = ""
-weight = 1
+weight = 0
 
 [extra]
 type="Education"
@@ -13,4 +13,5 @@ to="May 2020"
 place="ONLINE - freeCodeCamp.org"
 +++
 
-Example project page
+Full Stack Developer Certification, representing approximately 1800
+hours of coursework.

@@ -3,32 +3,29 @@
 {% block main_content %}
     <link href="/about.css" rel="stylesheet" />
     <main>
-        <section class="resume-section education">
-            <h2 class="section-title">Education</h2>
-            {%- for page in section.pages | filter(attribute="extra.type", value="Education") %}        
-                <div class="education-item">
-                    <div class="education-header">
-                    <h3 class="degree">{{page.extra.certificate}}</h3>
-                    <span class="university-name">{{page.extra.school}}</span>
-                    <span class="dates">Graduated: {{page.extra.to}}</span>
-                    </div>
-                    <p class="major">Major: Computer Science</p>
-                    <p class="honors">Graduated with Honors</p>
+        <section class="">
+            <h2 class="">Education</h2>
+            {%- for page in section.pages | filter(attribute="extra.type", value="Education") | reverse %}        
+                <div class="">
+                    <h3 class="">{{page.extra.certificate}} / {{page.extra.school}}</h3>
+                    <span class="">{{page.extra.from}} - {{page.extra.to}},</span>
+                    <span class="">{{page.extra.place}}</span>
+                    <p>{{page.content | safe}}</p>
                 </div>
             {% endfor -%}
         </section> 
 
-        <section class="resume-section experience">
-            <h2 class="section-title">Professional Experience</h2>
+        <section class="">
+            <h2 class="">Professional Experience</h2>
             {%- for page in section.pages | filter(attribute="extra.type", value="Professional Experience") %}
-                <div class="education-item">
-                    <div class="education-header">
-                    <h3 class="degree">{{page.extra.role}}</h3>
-                    <span class="university-name">{{page.extra.company}}</span>
-                    <span class="dates">Graduated: {{page.extra.to}}</span>
+                <div class="">
+                    <div class="">
+                    <h3 class="">{{page.extra.role}}</h3>
+                    <span class="">{{page.extra.company}}</span>
+                    <span class="">Graduated: {{page.extra.to}}</span>
                     </div>
-                    <p class="major">Major: Computer Science</p>
-                    <p class="honors">Graduated with Honors</p>
+                    <p class="">Major: Computer Science</p>
+                    <p class="">Graduated with Honors</p>
                 </div>
             {% endfor -%}
         </section> 

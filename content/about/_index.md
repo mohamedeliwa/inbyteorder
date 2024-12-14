@@ -1,6 +1,7 @@
 +++
 title = "About me"
 template = "about.html"
+sort_by = "weight"
 +++
 
 Hi there! I’m a doctor who transitioned into software engineering, with five years of experience in full-stack web development using TypeScript and JavaScript.
