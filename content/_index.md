@@ -1,16 +1,17 @@
 +++
-# title= "Hi there!"
-title= "About me"
+title= "Hi there!"
 template = "homepage.html"
 +++
 
-Hi there! I’m a doctor who transitioned into software engineering, with five years of experience in full-stack web development using TypeScript and JavaScript.
+**Welcome to My Corner of the Internet!**
 
-I’ve had the opportunity to work with both local and international companies, delivering innovative solutions that make an impact.
+I'm so happy you found your way here! This blog is a reflection of my thoughts, experiences, and passions. Whether you’re here to get inspired, learn something new, or just enjoy a good read, I hope you find something that resonates with you. Feel free to explore my posts, share your thoughts in the comments, and join me on this journey of creativity and discovery.
 
-Currently, I’m a Rust developer at [Cosdata](https://www.cosdata.io/), where I’m deepening my expertise in low-level software development.
+For more about me, please check the [About](./about) page.
 
-# Education
+Thank you for visiting — I’m thrilled to have you here!
+
+<!-- # Education
 
 **_Postgraduate Medical Fellowship_**
 
@@ -135,7 +136,7 @@ organized educational and social events for students.
 <br />
 <br />
 <br />
-<br />
+<br /> -->
 
 <!--
 I’m a Rust developer at [Cosdata](https://www.cosdata.io/), with a background in full-stack web development and five years of experience working with TypeScript and JavaScript.

@@ -1,5 +1,5 @@
 +++
-title = "Hi there!"
+title = "About me"
 template = "about.html"
 sort_by = "weight"
 +++
