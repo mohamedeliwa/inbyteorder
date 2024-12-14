@@ -81,3 +81,39 @@ $faded-color: rgb(145, 143, 143);
     }
   }
 }
+
+.activities_section {
+  .title {
+    // text-decoration: ;
+  }
+
+  .activities_item {
+    margin: 30px auto;
+
+    .header {
+      margin: 0 auto;
+      .company {
+        // font-size: 22px;
+        font-weight: bold;
+      }
+      .role {
+      }
+    }
+
+    .sub_header {
+      margin: 0;
+      .time {
+        color: $faded-color;
+        font-size: 15px;
+      }
+      .place {
+        color: $faded-color;
+        font-size: 15px;
+      }
+    }
+    .content {
+      padding: 0;
+      font-size: 15px;
+    }
+  }
+}
