@@ -12,7 +12,7 @@
                     <span class="time">{{page.extra.from}} - {{page.extra.to}},</span>
                     <span class="place">{{page.extra.place}}</span>
                     </p>
-                    <p class="content">{{page.content | safe}}</p>
+                    <span class="content">{{page.content | safe}}</span>
                 </div>
             {% endfor -%}
         </section> 
@@ -23,10 +23,10 @@
                 <div class="experience_item">
                     <p class="header"><span class="company">{{page.extra.company}}</span> / <span class="role">{{page.extra.role}}</span></p>
                     <p  class="sub_header">
-                    <span class="time">{{page.extra.from}} - {{page.extra.to}}</span>,
+                    <span class="time">{{page.extra.from}} - {{page.extra.to}},</span>
                     <span class="place">{{page.extra.place}}</span>
                     </p>
-                    <p class="content">{{page.content | safe}}</p>
+                    <span class="content">{{page.content | safe}}</span>
                 </div>
             {% endfor -%}
         </section> 
