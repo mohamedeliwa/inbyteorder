@@ -1,119 +1,59 @@
 $faded-color: rgb(145, 143, 143);
 
-.education_section {
-  .title {
-    // text-decoration: ;
+.education_section,
+.activities_section,
+.experience_section,
+.experience_section,
+.skills_section {
+  .content {
+    padding: 0;
+    font-size: 15px;
   }
+  .sub_header {
+    margin: 0;
+    .time {
+      color: $faded-color;
+      font-size: 15px;
+    }
+    .place {
+      color: $faded-color;
+      font-size: 15px;
+    }
+  }
+}
 
+.education_section {
   .education_item {
     margin: 30px auto;
-
     .header {
       margin: 0 auto;
       .certificate {
-        // font-size: 22px;
         font-weight: bold;
       }
-      .school {
-      }
-    }
-
-    .sub_header {
-      margin: 0;
-      .time {
-        color: $faded-color;
-        font-size: 15px;
-      }
-      .place {
-        color: $faded-color;
-        font-size: 15px;
-      }
-    }
-    .content {
-      padding: 0;
-      font-size: 15px;
     }
   }
 }
 
 .experience_section {
-  .title {
-    // text-decoration: ;
-  }
-
   .experience_item {
     margin: 30px auto;
-
     .header {
       margin: 0 auto;
       .company {
-        // font-size: 22px;
         font-weight: bold;
       }
-      .role {
-      }
-    }
-
-    .sub_header {
-      margin: 0;
-      .time {
-        color: $faded-color;
-        font-size: 15px;
-      }
-      .place {
-        color: $faded-color;
-        font-size: 15px;
-      }
-    }
-    .content {
-      padding: 0;
-      font-size: 15px;
-    }
-  }
-}
-
-.skills_section {
-  .skills_item {
-    margin: 30px auto;
-    .content {
-      padding: 0;
-      font-size: 15px;
     }
   }
 }
 
 .activities_section {
-  .title {
-    // text-decoration: ;
-  }
-
   .activities_item {
     margin: 30px auto;
-
     .header {
       margin: 0 auto;
       .org {
-        // font-size: 22px;
         font-weight: bold;
       }
-      .role {
-      }
-    }
-
-    .sub_header {
-      margin: 0;
-      .time {
-        color: $faded-color;
-        font-size: 15px;
-      }
-      .place {
-        color: $faded-color;
-        font-size: 15px;
-      }
-    }
-    .content {
-      padding: 0;
-      font-size: 15px;
     }
   }
 }
