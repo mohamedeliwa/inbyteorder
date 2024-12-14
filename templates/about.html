@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <link href="/about.css" rel="stylesheet" />
+    {{ post_macros::home_page(section=section) }}
+    <main>
+        
+        <section class="experience_section">
+            <h2 class="title">Professional Experience</h2>
+            {%- for page in section.pages | filter(attribute="extra.type", value="Professional Experience") %}
+                <div class="experience_item">
+                    <p class="header"><span class="company">{{page.extra.company}}</span> / <span class="role">{{page.extra.role}}</span></p>
+                    <p  class="sub_header">
+                        <span class="time">{{page.extra.from}} - {{page.extra.to}},</span>
+                        <span class="place">{{page.extra.place}}</span>
+                    </p>
+                    <span class="content">{{page.content | safe}}</span>
+                </div>
+            {% endfor -%}
+        </section> 
+        <hr />
+        <section class="education_section">
+            <h2 class="title">Education</h2>
+            {%- for page in section.pages | filter(attribute="extra.type", value="Education") | reverse %}        
+                <div class="education_item">
+                    <p class="header"><span class="certificate">{{page.extra.certificate}}</span> / <span class="school">{{page.extra.school}}</span></p>
+                    <p  class="sub_header">
+                        <span class="time">{{page.extra.from}} - {{page.extra.to}},</span>
+                        <span class="place">{{page.extra.place}}</span>
+                    </p>
+                    <!-- <span class="content">{{page.content | safe}}</span> -->
+                </div>
+            {% endfor -%}
+        </section> 
+        <hr />
+        <section class="skills_section">
+            <h2 class="title">Skills</h2>
+            {%- for page in section.pages | filter(attribute="extra.type", value="Skills") %}
+                <div class="skills_item">
+                    <span class="content">{{page.content | safe}}</span>
+                </div>
+            {% endfor -%}
+        </section> 
+        <hr />
+        <section class="activities_section">
+            <h2 class="title">Activities</h2>
+            {%- for page in section.pages | filter(attribute="extra.type", value="Activities") %}
+                <div class="activities_item">
+                    <p class="header"><span class="org">{{page.extra.org}}</span> / <span class="role">{{page.extra.role}}</span></p>
+                    <p  class="sub_header">
+                        <!-- <span class="time">{{page.extra.from}} - {{page.extra.to}},</span> -->
+                        <span class="place">{{page.extra.place}}</span>
+                    </p>
+                    <span class="content">{{page.content | safe}}</span>
+                </div>
+            {% endfor -%}
+        </section> 
+        <br />
+        <br />
+        <br />
+    </main>
+{% endblock main_content %}
