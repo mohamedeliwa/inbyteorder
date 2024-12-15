@@ -5,7 +5,7 @@ template = "homepage.html"
 
 **Welcome to My Corner of the Internet!**
 
-I'm so happy you found your way here! This blog is a reflection of my thoughts, experiences, and passions. Whether you’re here to get inspired, learn something new, or just enjoy a good read, I hope you find something that resonates with you. Feel free to explore my posts, share your thoughts in the comments, and join me on this journey of creativity and discovery.
+I'm so happy you found your way here! This blog is a reflection of my thoughts, experiences, and passions. Whether you’re here to get inspired, learn something new, or just enjoy a good read, I hope you find something that resonates with you. Feel free to explore [my posts](./posts), share your thoughts in the comments, and join me on this journey of creativity and discovery.
 
 For more about me, please check the [About](./about) page.
 
