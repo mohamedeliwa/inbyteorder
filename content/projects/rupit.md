@@ -8,13 +8,15 @@ weight = 2
 # link_to = "https://github.com/not-matthias/apollo"
 +++
 
-# Rupit
+# Intro
 
-A simple CLI tool to run long, complex, and multistep terminal commands by aliases.
+Rupit is a straightforward CLI tool designed to execute long, complex, and multi-step terminal commands using aliases.
 
-using a configuration file `rupit.json`, that contains the list of aliases for rupit to use.
+It leverages a configuration file, `rupit.json`, which holds the list of aliases for Rupit to reference.
 
-## How to use
+It functions similarly to how npm scripts are used in Node.js projects.
+
+# How to use
 
 For Linux users you can use the pre-built binary from the releases <a href="https://github.com/mohamedeliwa/rupit/releases" target="_blank">page</a>, it's built and tested on **Ubuntu 22.04.4 LTS**,
 
@@ -66,12 +68,17 @@ echo "Hello World"
 Hello World
 ```
 
-## Available Commands
+# Available Commands
 
 - `rupit run <alias>` -> to run specific alias command from the config file.
 - `rupit show -c` -> to show the expected path of the config file.
 - `rupit show -a <alias>` -> to print the alias corresponding command without executing it.
 - `rupit help` -> to print the help message
+
+# Links
+
+- <a href="https://github.com/mohamedeliwa/bitcask" target="_blank">Source code on Github</a>
+<!-- - <a href="#" target="_blank">Posts written for this project</a> -->
 
 <br />
 <br />

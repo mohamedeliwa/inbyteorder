@@ -27,6 +27,7 @@ The underlying storage format is very simple: a text file where each line contai
 # Links
 
 - <a href="https://github.com/mohamedeliwa/bitcask" target="_blank">Source code on Github</a>
+<!-- - <a href="#" target="_blank">Posts written for this project</a> -->
 
 <br />
 <br />
