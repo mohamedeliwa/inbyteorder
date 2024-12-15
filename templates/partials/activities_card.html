@@ -1,0 +1,15 @@
+{% macro render(card) %}
+
+<div class="activities_item">
+  <p class="header">
+    <span class="org">{{card.extra.org}}</span> /
+    <span class="role">{{card.extra.role}}</span>
+  </p>
+  <p class="sub_header">
+    <!-- <span class="time">{{card.extra.from}} - {{card.extra.to}},</span> -->
+    <span class="place">{{card.extra.place}}</span>
+  </p>
+  <span class="content">{{card.content | safe}}</span>
+</div>
+
+{% endmacro render %}
