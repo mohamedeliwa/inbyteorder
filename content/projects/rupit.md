@@ -1,7 +1,7 @@
 +++
 title = "Rupit"
 description = "a simple CLI tool to run long terminal commands by aliases"
-weight = 1
+weight = 2
 
 [extra]
 # local_image = "/projects/project-1.jpg"

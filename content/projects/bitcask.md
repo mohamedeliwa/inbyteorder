@@ -1,7 +1,7 @@
 +++
 title = "bitcask"
 description = "A Log-Structured key/value storage engine as a partial implementation of the Bitcask engine."
-weight = 2
+weight = 1
 
 [extra]
 # You can also crop the image in the url by adjusting w=/h=
