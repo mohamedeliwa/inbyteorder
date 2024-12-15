@@ -72,3 +72,7 @@ Hello World
 - `rupit show -c` -> to show the expected path of the config file.
 - `rupit show -a <alias>` -> to print the alias corresponding command without executing it.
 - `rupit help` -> to print the help message
+
+<br />
+<br />
+<br />
