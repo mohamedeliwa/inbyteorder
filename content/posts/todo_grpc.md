@@ -1,11 +1,13 @@
 +++
-title = "Todo gRPC app"
+title = "Build a todo app with gRPC"
 description = "a todo app (server, client) built with gRPC protocol in Nodejs"
 weight = 1
 date = "2025-02-26"
 
 [extra]
 +++
+
+In this post, we'll build a simple to-do app using the gRPC protocol, following these steps:
 
 ## Init the project
 
@@ -17,7 +19,7 @@ create a new directory for our project
 $ mkdir todo-grpc
 ```
 
-inside the newly created project, start a nodejs project
+inside the newly created directory, start a nodejs project
 
 ```bash
 $ npm init
@@ -41,7 +43,7 @@ using npm install the needed dependencies
 $ npm install @grpc/grpc-js @grpc/proto-loader
 ```
 
-here is the exact versions of both packages I used while building this project
+here is the exact versions of both packages I used in this post
 
 ```json
  "@grpc/grpc-js": "^1.12.6",
@@ -56,15 +58,15 @@ $ touch todo.proto server.js client.js
 
 ## Building the schema
 
-let's start by building the schema that we will use to communicate between the server and the client
+Let's start by defining the schema for communication between the server and the client.
 
-inside the todo.proto file, define a package called `todoPackage`, that contains a service called `Todo`
+In the `todo.proto` file, create a package called `todoPackage`, which contains a service named `Todo`.
 
-this service will contain the definition of our methods used for communication
+This service will define the methods for communication:
 
-- `createTodo`: used to create a todo, accept a `TodoItem` (we will define it later), and returns the created `TodoItem`
-- `readTodos`: used to read todos from the server, takes no params and returns `TodoItems` (we will define it later)
-- `readTodosStream`: used to stream todos from the server one by one, instead of sending all todos in one chunck like `readTodos`, this is more effecient for sending large data
+- `createTodo`: This method allows the creation of a to-do item. It accepts a `TodoItem` (which we will define later) and returns the created `TodoItem`.
+- `readTodos`: This method retrieves all to-dos from the server. It takes no parameters and returns a list of `TodoItems` (to be defined later)
+- `readTodosStream`: This method streams to-dos from the server one by one. Unlike `readTodos`, which sends all to-dos in one chunk, this approach is more efficient for handling large datasets.
 
 ```proto
 syntax = "proto3";
@@ -81,7 +83,7 @@ service Todo {
 };
 ```
 
-The first line is defining the version of proto sytanx we are using.
+The first line defines the version of proto sytanx we are using.
 
 After that we need to define the types we used as method params and return types
 
