@@ -9,64 +9,63 @@ date = "2025-02-26"
 
 In this post, we'll build a simple to-do app using the gRPC protocol, following these steps:
 
-## Init the project
+## Initialize the Project
 
-1. start a new nodejs project
+### 1. Start a New Node.js Project
 
-create a new directory for our project
+Create a new directory for your project:
 
 ```bash
 $ mkdir todo-grpc
 ```
 
-inside the newly created directory, start a nodejs project
+Navigate to the newly created directory and initialize the Node.js project:
 
 ```bash
 $ npm init
 ```
 
-a new file will be generated, called `package.json`
-in this file, add the following entry, this will allow us to use ES6 modules instead of CommonJs modules
+This command generates a `package.json` file. In this file, add the following entry to enable ES6 modules instead of CommonJS:
 
 ```json
- "type": "module"
+"type": "module"
 ```
 
-2. Install dependencies
+### 2. Install Dependencies
 
-using npm install the needed dependencies
+Install the necessary dependencies:
 
-- "@grpc/grpc-js": which is the gRPC client
-- "@grpc/proto-loader": A utility package for loading defined services within .proto files for use with gRPC
+- `@grpc/grpc-js`: The gRPC client
+- `@grpc/proto-loader`: A utility for loading `.proto` files for gRPC services
 
 ```bash
 $ npm install @grpc/grpc-js @grpc/proto-loader
 ```
 
-here is the exact versions of both packages I used in this post
+Here are the exact versions used in this post:
 
 ```json
- "@grpc/grpc-js": "^1.12.6",
- "@grpc/proto-loader": "^0.7.13"
+"@grpc/grpc-js": "^1.12.6",
+"@grpc/proto-loader": "^0.7.13"
 ```
 
-3. create todo.proto, server.js, and client.js files
+### 3. Create Required Files
+
+Create the required files for the project:
 
 ```bash
 $ touch todo.proto server.js client.js
 ```
 
-## Building the schema
+## Defining the Schema
 
-Let's start by defining the schema for communication between the server and the client.
+Let’s start by defining the schema for communication between the server and the client.
 
-In the `todo.proto` file, create a package called `todoPackage`, which contains a service named `Todo`.
+In the `todo.proto` file, create a package called `todoPackage` and define a service named `Todo`. This service will expose methods for communication:
 
-This service will define the methods for communication:
-
-- `createTodo`: This method allows the creation of a to-do item. It accepts a `TodoItem` (which we will define later) and returns the created `TodoItem`.
-- `readTodos`: This method retrieves all to-dos from the server. It takes no parameters and returns a list of `TodoItems` (to be defined later)
-- `readTodosStream`: This method streams to-dos from the server one by one. Unlike `readTodos`, which sends all to-dos in one chunk, this approach is more efficient for handling large datasets.
+- **`createTodo`**: Creates a new to-do item. It accepts a `TodoItem` (which we'll define later) and returns the created `TodoItem`.
+- **`readTodos`**: Retrieves all to-dos from the server. It takes no parameters and returns a list of `TodoItems`.
+- **`readTodosStream`**: Streams to-dos from the server one by one. This method is more efficient for handling large datasets compared to `readTodos`, which returns all to-dos in one go.
 
 ```proto
 syntax = "proto3";
@@ -74,22 +73,20 @@ syntax = "proto3";
 package todoPackage;
 
 service Todo {
-     // unary gRPC
+    // Unary gRPC
     rpc createTodo(TodoItem) returns(TodoItem);
-    // synchronous
+    // Synchronous
     rpc readTodos(NoParams) returns(TodoItems);
-    // server streaming
+    // Server streaming
     rpc readTodosStream(NoParams) returns(stream TodoItem);
 };
 ```
 
-The first line defines the version of proto sytanx we are using.
+We also need to define the types used in the method parameters and return types:
 
-After that we need to define the types we used as method params and return types
-
-- `NoParams`: represents a method that takes no params
-- `TodoItem`: represents the structure of each todo
-- `TodoItems`: is a struct/object that contains a property called items which is a array/list of type `TodoItem`, we represent lists/arrays using the keyword `repeated`
+- **`NoParams`**: A method with no parameters.
+- **`TodoItem`**: Defines the structure of a single to-do item.
+- **`TodoItems`**: Contains a property `items`, which is a list of `TodoItem` objects. Lists/arrays are represented using the `repeated` keyword.
 
 ```proto
 message NoParams {};
@@ -104,29 +101,28 @@ message TodoItems {
 };
 ```
 
-## Building the server
+## Building the Server
 
-let's start by importing our dependencies
+Now, let’s build the server.
+
+First, import the necessary dependencies:
 
 ```js
 import grpc from "@grpc/grpc-js";
 import protoLoader from "@grpc/proto-loader";
 ```
 
-then we need to load the schema we defined in the `todo.proto` file, into the gRPC client
+Next, load the schema we defined in `todo.proto`:
 
 ```js
 const packageDef = protoLoader.loadSync("todo.proto", {});
-
 const grpcObject = grpc.loadPackageDefinition(packageDef);
 
-// we can access our defined package using the dot notation
+// Access the defined package using dot notation
 const todoPackage = grpcObject.todoPackage;
 ```
 
-then we need to create an instance of gRPC server, and add our todo service inside it.
-
-the todo service expects us to provide it with the actual implementation of the methods we defined in the schema.
+Create an instance of the gRPC server and add the `Todo` service:
 
 ```js
 const server = new grpc.Server();
@@ -138,8 +134,12 @@ server.addService(todoPackage.Todo.service, {
 });
 
 const todos = [];
+```
 
-// Unary
+Next, implement the methods for the `Todo` service:
+
+```js
+// Unary gRPC method
 function createTodo(call, callback) {
   const todoItem = {
     id: todos.length,
@@ -149,13 +149,13 @@ function createTodo(call, callback) {
   callback(null, todoItem);
 }
 
-// Sync
+// Sync gRPC method
 function readTodos(call, callback) {
   callback(null, { items: todos });
 }
 
-// server stream
-function readTodosStream(call, callback) {
+// Server streaming gRPC method
+function readTodosStream(call) {
   todos.forEach((todo) => {
     call.write(todo);
   });
@@ -163,56 +163,47 @@ function readTodosStream(call, callback) {
 }
 ```
 
-we created an array called todo, to act as an in-memory storage for incoming todos.
+The `todos` array acts as in-memory storage for the to-dos.
 
-Notice:
+### Key Notes:
 
-- inside the `createTodo` method,
+- **`createTodo` method**:
+  - We access the incoming to-do item via `call.request`, which is similar to accessing `request.body` in REST APIs.
+  - After saving the to-do in the array, we call the callback with the created item.
+- **`readTodos` method**:
 
-  - we were able to access the incoming todo item through the `call` object, as `call.request` is the `todoItem` data send in the call. (similar to request.body in REST Apis)
-  - after saving the todo in the array, we called the callback method, passing it our created item
+  - This method returns all to-dos at once by invoking the callback with the full list.
 
-- inside the `readTodos` method,
+- **`readTodosStream` method**:
+  - We stream each to-do item individually to the client.
 
-  - we call the callback method with all the todos we have in one shot
-
-- inside the `readTodosStream`
-  - we loop over the todos and send each todo alone, streaming the response to the client
-
-The last step is to bind the server to a port and start listening
+Finally, bind the server to a port and start listening:
 
 ```js
 server.bindAsync(
   "0.0.0.0:3000",
   grpc.ServerCredentials.createInsecure(),
   () => {
-    console.log("server is listening on port 3000");
+    console.log("Server is listening on port 3000");
   }
 );
 ```
 
-## Building the client
+## Building the Client
 
-the client will be quite similar to the server,
-so I will skip explaining the repeated steps
+The client setup is similar to the server, so we will skip the repeated steps.
 
 ```js
 import grpc from "@grpc/grpc-js";
 import protoLoader from "@grpc/proto-loader";
 
 const packageDef = protoLoader.loadSync("todo.proto", {});
-
 const grpcObject = grpc.loadPackageDefinition(packageDef);
 
 const todoPackage = grpcObject.todoPackage;
 ```
 
-after this we need to point our client service to the address at which it can send requests to our server service
-
-so we create a new instance of the todo service
-then pass the localhost and port at which our server is listening
-
-the second param, basically we are saying it's insecure connection
+Next, create a new instance of the `Todo` service and specify the server's address and port:
 
 ```js
 const client = new todoPackage.Todo(
@@ -221,61 +212,64 @@ const client = new todoPackage.Todo(
 );
 ```
 
-we need to use our client like so `node client.js "Buy some Books"`
-so our client picks up the todo text we wrote and send it to the server to store.
+To run the client, execute the following command, passing the to-do text as an argument:
 
-to be able to so, we need a way to access the command line arguments
+```bash
+node client.js "Buy some books"
+```
+
+Inside `client.js`, access the command-line argument:
 
 ```js
 const text = process.argv[2];
 ```
 
-this line basically gets the text we enter to our client.js
-
-then we start invoke our todo methods
+Then, invoke the gRPC methods:
 
 ```js
-// Unary
+// Unary gRPC method
 client.createTodo({ id: -1, text }, (err, res) => {
   console.log({
     create: res,
   });
 });
 
-// sync
+// Sync gRPC method
 client.readTodos({}, (err, res) => {
   res.items.forEach((item) => {
     console.log(item.text);
   });
 });
 
-// server streaming
+// Server streaming method
 const call = client.readTodosStream();
 call.on("data", (item) => {
   console.log(item.text);
 });
-call.on("end", (e) => console.log("server done streaming"));
+call.on("end", () => console.log("Server done streaming"));
 ```
 
-- the first call will create a new todo on the server
-- the second call will get us all the todos on the server
-- the third call, is stream, so we will attach two event listeners to it, one will be invoked each time we get new data, and another will be invoked when server finishes streaming
+### Explanation of Calls:
 
-## Run the project
+- The first call creates a new to-do on the server.
+- The second call retrieves all to-dos from the server.
+- The third call streams to-dos from the server, with event listeners handling incoming data and the end of the stream.
 
-inside a terminal run
+## Running the Project
+
+1. In one terminal, start the server:
 
 ```bash
 node server.js
 ```
 
-and from another terminal, run the client multiple times, and pass text to it
+2. In another terminal, run the client multiple times with different to-do texts:
 
 ```bash
 node client.js "Buy some books"
 ```
 
-That's it, thanks for reading!
+That’s it! Thanks for reading!
 
 <br />
 <br />
@@ -283,3 +277,4 @@ That's it, thanks for reading!
 <br />
 <br />
 <br />
+
