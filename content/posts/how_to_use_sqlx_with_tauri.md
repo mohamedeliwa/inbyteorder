@@ -67,3 +67,10 @@ async fn db_test(state: State<'_, AppData>) -> Result<(), String> {
     Ok(())
 }
 ```
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
