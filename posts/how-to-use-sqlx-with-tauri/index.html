@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<html class="dark light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    
+    
+    
+    <title>
+         How to use SQLX (SQLite) with Tauri (Rust side)
+        
+    </title>
+
+        
+            <meta property="og:title" content="How to use SQLX (SQLite) with Tauri (Rust side)" />
+        
+     
+
+     
+         
+             <meta property="og:description" content="How to install SQLx with the SQLite feature and use it with Tauri, focusing on the Rust side." />
+         
+     
+
+     
+         
+             <meta name="description" content="How to install SQLx with the SQLite feature and use it with Tauri, focusing on the Rust side." />
+         
+    
+
+    
+    
+
+    
+    
+        <link href=https://mohamedeliwa.github.io/inbyteorder/fonts.css rel="stylesheet" />
+    
+
+    
+    
+
+    
+    
+
+    
+    
+        <script src=https://mohamedeliwa.github.io/inbyteorder/js/toc.js></script>
+    
+    
+    
+    
+
+    
+
+    
+    <link rel="alternate" type="application/atom+xml" title="in-byte-order" href="https://mohamedeliwa.github.io/inbyteorder/atom.xml">
+
+
+    
+    
+        <link rel="stylesheet" type="text/css" href=https://mohamedeliwa.github.io/inbyteorder/theme/light.css />
+        <link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://mohamedeliwa.github.io/inbyteorder/theme/dark.css" />
+    
+
+    <!-- Set the correct theme in the script -->
+    <script src=https://mohamedeliwa.github.io/inbyteorder/js/themetoggle.js></script>
+    
+        <script>setTheme(getSavedTheme());</script>
+    
+
+    <link rel="stylesheet" type="text/css" media="screen" href=https://mohamedeliwa.github.io/inbyteorder/main.css />
+
+    
+</head>
+
+
+<body>
+    <div class="content">
+        <header>
+    <div class="main">
+        <a href=https:&#x2F;&#x2F;mohamedeliwa.github.io&#x2F;inbyteorder&#x2F;>in-byte-order</a>
+
+        <div class="socials">
+            
+            
+            <a rel="me" href="https:&#x2F;&#x2F;github.com&#x2F;mohamedeliwa" target="_blank" class="social">
+            
+                <img alt=github src=https://mohamedeliwa.github.io/inbyteorder/social_icons/github.svg>
+            </a>
+            
+            
+            <a rel="me" href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;mohammedredaa&#x2F;" target="_blank" class="social">
+            
+                <img alt=linkedin src=https://mohamedeliwa.github.io/inbyteorder/social_icons/linkedin.svg>
+            </a>
+            
+        </div>
+    </div>
+
+    <nav>
+        
+        <a href=https://mohamedeliwa.github.io/inbyteorder/posts style="margin-left: 0.5em">&#x2F;posts</a>
+        
+        <a href=https://mohamedeliwa.github.io/inbyteorder/projects style="margin-left: 0.5em">&#x2F;projects</a>
+        
+        <a href=https://mohamedeliwa.github.io/inbyteorder/about style="margin-left: 0.5em">&#x2F;about</a>
+        
+
+        
+        |<a id="dark-mode-toggle" onclick="toggleTheme(); event.preventDefault();" href="#">
+            <img src=https://mohamedeliwa.github.io/inbyteorder/feather/sun.svg id="sun-icon" style="filter: invert(1);" alt="Light" />
+            <img src=https://mohamedeliwa.github.io/inbyteorder/feather/moon.svg id="moon-icon" alt="Dark" />
+        </a>
+
+        <!-- Inititialize the theme toggle icons -->
+        <script>updateItemToggleTheme()</script>
+        
+    </nav>
+</header>
+
+
+        
+        
+    
+<main>
+    <article>
+        <div class="title">
+            
+            
+    <div class="page-header">
+        How to use SQLX (SQLite) with Tauri (Rust side)<span class="primary-color" style="font-size: 1.6em">.</span>
+    </div>
+
+
+                <div class="meta">
+                    
+                        Posted on <time>2025-03-03</time>
+                    
+
+                    
+
+                    
+
+                    
+                    
+
+                    
+                    
+
+                    
+
+                </div>
+        </div>
+
+        
+
+        
+        
+        
+            <div class="toc-container">
+                <h1 class="toc-title">Table of Contents</h1>
+                <ul class="toc-list">
+                    
+                        <li>
+                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/how-to-use-sqlx-with-tauri/#install-sqlx">Install SQLx</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/how-to-use-sqlx-with-tauri/#connect-to-the-database">Connect to the Database</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/how-to-use-sqlx-with-tauri/#store-the-connection-pool">Store the Connection Pool</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/how-to-use-sqlx-with-tauri/#access-the-database-in-an-async-command">Access the Database in an Async Command</a>
+                            
+                        </li>
+                    
+                </ul>
+            </div>
+        
+        
+
+        <section class="body">
+            <p>This article demonstrates how to install SQLx with the SQLite feature and use it with Tauri, focusing on the Rust side.</p>
+<h2 id="install-sqlx"><a class="zola-anchor" href="#install-sqlx" aria-label="Anchor link for: install-sqlx">Install SQLx</a></h2>
+<p>To install SQLx with the Tokio runtime and SQLite support, add the following to the <code>[dependencies]</code> section of your <code>src-tauri/Cargo.toml</code> file:</p>
+<pre data-lang="toml" style="background-color:#2b303b;color:#c0c5ce;" class="language-toml "><code class="language-toml" data-lang="toml"><span>[dependencies]
+</span><span style="color:#65737e;"># SQLx with Tokio (no TLS) and SQLite support
+</span><span style="color:#bf616a;">sqlx </span><span>= { </span><span style="color:#bf616a;">version </span><span>= &quot;</span><span style="color:#a3be8c;">0.8</span><span>&quot;, </span><span style="color:#bf616a;">features </span><span>= [ &quot;</span><span style="color:#a3be8c;">runtime-tokio</span><span>&quot;, &quot;</span><span style="color:#a3be8c;">sqlite</span><span>&quot;] }
+</span></code></pre>
+<h2 id="connect-to-the-database"><a class="zola-anchor" href="#connect-to-the-database" aria-label="Anchor link for: connect-to-the-database">Connect to the Database</a></h2>
+<p>Create an asynchronous method to establish a connection to the SQLite database and return a connection pool:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>async </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">establish_connection</span><span>() -&gt; SqlitePool {
+</span><span>    SqlitePoolOptions::new()
+</span><span>        .</span><span style="color:#96b5b4;">max_connections</span><span>(</span><span style="color:#d08770;">5</span><span>)
+</span><span>        .</span><span style="color:#96b5b4;">connect</span><span>(&quot;</span><span style="color:#a3be8c;">sqlite://</span><span>&quot;)
+</span><span>        .await
+</span><span>        .</span><span style="color:#96b5b4;">expect</span><span>(&quot;</span><span style="color:#a3be8c;">Unable to connect to SQLite database</span><span>&quot;)
+</span><span>}
+</span></code></pre>
+<h2 id="store-the-connection-pool"><a class="zola-anchor" href="#store-the-connection-pool" aria-label="Anchor link for: store-the-connection-pool">Store the Connection Pool</a></h2>
+<p>Create a struct to store the database connection pool:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#b48ead;">struct </span><span>AppData {
+</span><span>    </span><span style="color:#bf616a;">db_pool</span><span>: SqlitePool,
+</span><span>}
+</span></code></pre>
+<p>Next, initialize the connection pool:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span style="color:#65737e;">// Create a connection pool
+</span><span style="color:#b48ead;">let</span><span> db_pool: SqlitePool = </span><span style="color:#96b5b4;">block_on</span><span>(</span><span style="color:#96b5b4;">establish_connection</span><span>());
+</span></code></pre>
+<p>Store the connection pool in the application state:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span> app.</span><span style="color:#96b5b4;">manage</span><span>(AppData { db_pool });
+</span></code></pre>
+<h2 id="access-the-database-in-an-async-command"><a class="zola-anchor" href="#access-the-database-in-an-async-command" aria-label="Anchor link for: access-the-database-in-an-async-command">Access the Database in an Async Command</a></h2>
+<p>To interact with the database from an asynchronous command, define a Tauri command like this:</p>
+<pre data-lang="rs" style="background-color:#2b303b;color:#c0c5ce;" class="language-rs "><code class="language-rs" data-lang="rs"><span>#[</span><span style="color:#bf616a;">tauri</span><span>::</span><span style="color:#bf616a;">command</span><span>]
+</span><span>async </span><span style="color:#b48ead;">fn </span><span style="color:#8fa1b3;">db_test</span><span>(</span><span style="color:#bf616a;">state</span><span>: State&lt;&#39;_, AppData&gt;) -&gt; Result&lt;(), String&gt; {
+</span><span>    </span><span style="color:#65737e;">// You can now interact with the database using `state.db_pool`
+</span><span>    Ok(())
+</span><span>}
+</span></code></pre>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+        </section>
+    </article>
+</main>
+
+
+
+        
+            
+        
+
+        
+    </div>
+</body>
+
+</html>

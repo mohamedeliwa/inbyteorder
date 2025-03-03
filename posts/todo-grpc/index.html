@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<html class="dark light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    
+    
+    
+    <title>
+         Build a todo app with gRPC
+        
+    </title>
+
+        
+            <meta property="og:title" content="Build a todo app with gRPC" />
+        
+     
+
+     
+         
+             <meta property="og:description" content="a todo app (server, client) built with gRPC protocol in Nodejs" />
+         
+     
+
+     
+         
+             <meta name="description" content="a todo app (server, client) built with gRPC protocol in Nodejs" />
+         
+    
+
+    
+    
+
+    
+    
+        <link href=https://mohamedeliwa.github.io/inbyteorder/fonts.css rel="stylesheet" />
+    
+
+    
+    
+
+    
+    
+
+    
+    
+        <script src=https://mohamedeliwa.github.io/inbyteorder/js/toc.js></script>
+    
+    
+    
+    
+
+    
+
+    
+    <link rel="alternate" type="application/atom+xml" title="in-byte-order" href="https://mohamedeliwa.github.io/inbyteorder/atom.xml">
+
+
+    
+    
+        <link rel="stylesheet" type="text/css" href=https://mohamedeliwa.github.io/inbyteorder/theme/light.css />
+        <link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://mohamedeliwa.github.io/inbyteorder/theme/dark.css" />
+    
+
+    <!-- Set the correct theme in the script -->
+    <script src=https://mohamedeliwa.github.io/inbyteorder/js/themetoggle.js></script>
+    
+        <script>setTheme(getSavedTheme());</script>
+    
+
+    <link rel="stylesheet" type="text/css" media="screen" href=https://mohamedeliwa.github.io/inbyteorder/main.css />
+
+    
+</head>
+
+
+<body>
+    <div class="content">
+        <header>
+    <div class="main">
+        <a href=https:&#x2F;&#x2F;mohamedeliwa.github.io&#x2F;inbyteorder&#x2F;>in-byte-order</a>
+
+        <div class="socials">
+            
+            
+            <a rel="me" href="https:&#x2F;&#x2F;github.com&#x2F;mohamedeliwa" target="_blank" class="social">
+            
+                <img alt=github src=https://mohamedeliwa.github.io/inbyteorder/social_icons/github.svg>
+            </a>
+            
+            
+            <a rel="me" href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;mohammedredaa&#x2F;" target="_blank" class="social">
+            
+                <img alt=linkedin src=https://mohamedeliwa.github.io/inbyteorder/social_icons/linkedin.svg>
+            </a>
+            
+        </div>
+    </div>
+
+    <nav>
+        
+        <a href=https://mohamedeliwa.github.io/inbyteorder/posts style="margin-left: 0.5em">&#x2F;posts</a>
+        
+        <a href=https://mohamedeliwa.github.io/inbyteorder/projects style="margin-left: 0.5em">&#x2F;projects</a>
+        
+        <a href=https://mohamedeliwa.github.io/inbyteorder/about style="margin-left: 0.5em">&#x2F;about</a>
+        
+
+        
+        |<a id="dark-mode-toggle" onclick="toggleTheme(); event.preventDefault();" href="#">
+            <img src=https://mohamedeliwa.github.io/inbyteorder/feather/sun.svg id="sun-icon" style="filter: invert(1);" alt="Light" />
+            <img src=https://mohamedeliwa.github.io/inbyteorder/feather/moon.svg id="moon-icon" alt="Dark" />
+        </a>
+
+        <!-- Inititialize the theme toggle icons -->
+        <script>updateItemToggleTheme()</script>
+        
+    </nav>
+</header>
+
+
+        
+        
+    
+<main>
+    <article>
+        <div class="title">
+            
+            
+    <div class="page-header">
+        Build a todo app with gRPC<span class="primary-color" style="font-size: 1.6em">.</span>
+    </div>
+
+
+                <div class="meta">
+                    
+                        Posted on <time>2025-02-26</time>
+                    
+
+                    
+
+                    
+
+                    
+                    
+
+                    
+                    
+
+                    
+
+                </div>
+        </div>
+
+        
+
+        
+        
+        
+            <div class="toc-container">
+                <h1 class="toc-title">Table of Contents</h1>
+                <ul class="toc-list">
+                    
+                        <li>
+                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/todo-grpc/#initialize-the-project">Initialize the Project</a>
+                            
+                                <ul>
+                                    
+                                        <li>
+                                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/todo-grpc/#1-start-a-new-node-js-project">1. Start a New Node.js Project</a>
+                                        </li>
+
+                                        
+                                    
+                                        <li>
+                                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/todo-grpc/#2-install-dependencies">2. Install Dependencies</a>
+                                        </li>
+
+                                        
+                                    
+                                        <li>
+                                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/todo-grpc/#3-create-required-files">3. Create Required Files</a>
+                                        </li>
+
+                                        
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/todo-grpc/#defining-the-schema">Defining the Schema</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/todo-grpc/#building-the-server">Building the Server</a>
+                            
+                                <ul>
+                                    
+                                        <li>
+                                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/todo-grpc/#key-notes">Key Notes:</a>
+                                        </li>
+
+                                        
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/todo-grpc/#building-the-client">Building the Client</a>
+                            
+                                <ul>
+                                    
+                                        <li>
+                                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/todo-grpc/#explanation-of-calls">Explanation of Calls:</a>
+                                        </li>
+
+                                        
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="https://mohamedeliwa.github.io/inbyteorder/posts/todo-grpc/#running-the-project">Running the Project</a>
+                            
+                        </li>
+                    
+                </ul>
+            </div>
+        
+        
+
+        <section class="body">
+            <p>In this post, we'll build a simple to-do app using the gRPC protocol, following these steps:</p>
+<h2 id="initialize-the-project"><a class="zola-anchor" href="#initialize-the-project" aria-label="Anchor link for: initialize-the-project">Initialize the Project</a></h2>
+<h3 id="1-start-a-new-node-js-project"><a class="zola-anchor" href="#1-start-a-new-node-js-project" aria-label="Anchor link for: 1-start-a-new-node-js-project">1. Start a New Node.js Project</a></h3>
+<p>Create a new directory for your project:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> mkdir todo-grpc
+</span></code></pre>
+<p>Navigate to the newly created directory and initialize the Node.js project:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> npm init
+</span></code></pre>
+<p>This command generates a <code>package.json</code> file. In this file, add the following entry to enable ES6 modules instead of CommonJS:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>&quot;</span><span style="color:#a3be8c;">type</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">module</span><span>&quot;
+</span></code></pre>
+<h3 id="2-install-dependencies"><a class="zola-anchor" href="#2-install-dependencies" aria-label="Anchor link for: 2-install-dependencies">2. Install Dependencies</a></h3>
+<p>Install the necessary dependencies:</p>
+<ul>
+<li><code>@grpc/grpc-js</code>: The gRPC client</li>
+<li><code>@grpc/proto-loader</code>: A utility for loading <code>.proto</code> files for gRPC services</li>
+</ul>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> npm install @grpc/grpc-js @grpc/proto-loader
+</span></code></pre>
+<p>Here are the exact versions used in this post:</p>
+<pre data-lang="json" style="background-color:#2b303b;color:#c0c5ce;" class="language-json "><code class="language-json" data-lang="json"><span>&quot;</span><span style="color:#a3be8c;">@grpc/grpc-js</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">^1.12.6</span><span>&quot;,
+</span><span>&quot;</span><span style="color:#a3be8c;">@grpc/proto-loader</span><span>&quot;: &quot;</span><span style="color:#a3be8c;">^0.7.13</span><span>&quot;
+</span></code></pre>
+<h3 id="3-create-required-files"><a class="zola-anchor" href="#3-create-required-files" aria-label="Anchor link for: 3-create-required-files">3. Create Required Files</a></h3>
+<p>Create the required files for the project:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">$</span><span> touch todo.proto server.js client.js
+</span></code></pre>
+<h2 id="defining-the-schema"><a class="zola-anchor" href="#defining-the-schema" aria-label="Anchor link for: defining-the-schema">Defining the Schema</a></h2>
+<p>Let’s start by defining the schema for communication between the server and the client.</p>
+<p>In the <code>todo.proto</code> file, create a package called <code>todoPackage</code> and define a service named <code>Todo</code>. This service will expose methods for communication:</p>
+<ul>
+<li><strong><code>createTodo</code></strong>: Creates a new to-do item. It accepts a <code>TodoItem</code> (which we'll define later) and returns the created <code>TodoItem</code>.</li>
+<li><strong><code>readTodos</code></strong>: Retrieves all to-dos from the server. It takes no parameters and returns a list of <code>TodoItems</code>.</li>
+<li><strong><code>readTodosStream</code></strong>: Streams to-dos from the server one by one. This method is more efficient for handling large datasets compared to <code>readTodos</code>, which returns all to-dos in one go.</li>
+</ul>
+<pre data-lang="proto" style="background-color:#2b303b;color:#c0c5ce;" class="language-proto "><code class="language-proto" data-lang="proto"><span style="color:#b48ead;">syntax </span><span>= &quot;</span><span style="color:#a3be8c;">proto3</span><span>&quot;;
+</span><span>
+</span><span style="color:#b48ead;">package </span><span>todoPackage;
+</span><span>
+</span><span style="color:#b48ead;">service </span><span style="color:#ebcb8b;">Todo </span><span>{
+</span><span>    </span><span style="color:#65737e;">// Unary gRPC
+</span><span>    </span><span style="color:#b48ead;">rpc </span><span style="color:#8fa1b3;">createTodo</span><span>(</span><span style="color:#bf616a;">TodoItem</span><span>) </span><span style="color:#b48ead;">returns</span><span>(</span><span style="color:#bf616a;">TodoItem</span><span>);
+</span><span>    </span><span style="color:#65737e;">// Synchronous
+</span><span>    </span><span style="color:#b48ead;">rpc </span><span style="color:#8fa1b3;">readTodos</span><span>(</span><span style="color:#bf616a;">NoParams</span><span>) </span><span style="color:#b48ead;">returns</span><span>(</span><span style="color:#bf616a;">TodoItems</span><span>);
+</span><span>    </span><span style="color:#65737e;">// Server streaming
+</span><span>    </span><span style="color:#b48ead;">rpc </span><span style="color:#8fa1b3;">readTodosStream</span><span>(</span><span style="color:#bf616a;">NoParams</span><span>) </span><span style="color:#b48ead;">returns</span><span>(</span><span style="color:#b48ead;">stream </span><span style="color:#bf616a;">TodoItem</span><span>);
+</span><span>};
+</span></code></pre>
+<p>We also need to define the types used in the method parameters and return types:</p>
+<ul>
+<li><strong><code>NoParams</code></strong>: A method with no parameters.</li>
+<li><strong><code>TodoItem</code></strong>: Defines the structure of a single to-do item.</li>
+<li><strong><code>TodoItems</code></strong>: Contains a property <code>items</code>, which is a list of <code>TodoItem</code> objects. Lists/arrays are represented using the <code>repeated</code> keyword.</li>
+</ul>
+<pre data-lang="proto" style="background-color:#2b303b;color:#c0c5ce;" class="language-proto "><code class="language-proto" data-lang="proto"><span style="color:#b48ead;">message </span><span style="color:#ebcb8b;">NoParams </span><span style="color:#eff1f5;">{}</span><span>;
+</span><span>
+</span><span style="color:#b48ead;">message </span><span style="color:#ebcb8b;">TodoItem </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">    int32 </span><span style="color:#bf616a;">id </span><span>= </span><span style="color:#d08770;">1</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">    string </span><span style="color:#bf616a;">text </span><span>= </span><span style="color:#d08770;">2</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">}</span><span>;
+</span><span>
+</span><span style="color:#b48ead;">message </span><span style="color:#ebcb8b;">TodoItems </span><span style="color:#eff1f5;">{
+</span><span style="color:#eff1f5;">    </span><span style="color:#b48ead;">repeated </span><span style="color:#bf616a;">TodoItem items </span><span>= </span><span style="color:#d08770;">1</span><span style="color:#eff1f5;">;
+</span><span style="color:#eff1f5;">}</span><span>;
+</span></code></pre>
+<h2 id="building-the-server"><a class="zola-anchor" href="#building-the-server" aria-label="Anchor link for: building-the-server">Building the Server</a></h2>
+<p>Now, let’s build the server.</p>
+<p>First, import the necessary dependencies:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#b48ead;">import </span><span style="color:#bf616a;">grpc </span><span style="color:#b48ead;">from </span><span>&quot;</span><span style="color:#a3be8c;">@grpc/grpc-js</span><span>&quot;;
+</span><span style="color:#b48ead;">import </span><span style="color:#bf616a;">protoLoader </span><span style="color:#b48ead;">from </span><span>&quot;</span><span style="color:#a3be8c;">@grpc/proto-loader</span><span>&quot;;
+</span></code></pre>
+<p>Next, load the schema we defined in <code>todo.proto</code>:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#b48ead;">const </span><span style="color:#bf616a;">packageDef </span><span>= </span><span style="color:#bf616a;">protoLoader</span><span>.</span><span style="color:#8fa1b3;">loadSync</span><span>(&quot;</span><span style="color:#a3be8c;">todo.proto</span><span>&quot;, {});
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">grpcObject </span><span>= </span><span style="color:#bf616a;">grpc</span><span>.</span><span style="color:#8fa1b3;">loadPackageDefinition</span><span>(</span><span style="color:#bf616a;">packageDef</span><span>);
+</span><span>
+</span><span style="color:#65737e;">// Access the defined package using dot notation
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">todoPackage </span><span>= </span><span style="color:#bf616a;">grpcObject</span><span>.</span><span style="color:#bf616a;">todoPackage</span><span>;
+</span></code></pre>
+<p>Create an instance of the gRPC server and add the <code>Todo</code> service:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#b48ead;">const </span><span style="color:#bf616a;">server </span><span>= new grpc.Server();
+</span><span>
+</span><span style="color:#bf616a;">server</span><span>.</span><span style="color:#8fa1b3;">addService</span><span>(</span><span style="color:#bf616a;">todoPackage</span><span>.</span><span style="color:#bf616a;">Todo</span><span>.</span><span style="color:#bf616a;">service</span><span>, {
+</span><span>  createTodo: </span><span style="color:#bf616a;">createTodo</span><span>,
+</span><span>  readTodos: </span><span style="color:#bf616a;">readTodos</span><span>,
+</span><span>  readTodosStream: </span><span style="color:#bf616a;">readTodosStream</span><span>,
+</span><span>});
+</span><span>
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">todos </span><span>= [];
+</span></code></pre>
+<p>Next, implement the methods for the <code>Todo</code> service:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#65737e;">// Unary gRPC method
+</span><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">createTodo</span><span>(</span><span style="color:#bf616a;">call</span><span>, </span><span style="color:#bf616a;">callback</span><span>) {
+</span><span>  </span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">todoItem </span><span>= {
+</span><span>    id: </span><span style="color:#bf616a;">todos</span><span>.length,
+</span><span>    text: </span><span style="color:#bf616a;">call</span><span>.</span><span style="color:#bf616a;">request</span><span>.text,
+</span><span>  };
+</span><span>  </span><span style="color:#bf616a;">todos</span><span>.</span><span style="color:#96b5b4;">push</span><span>(</span><span style="color:#bf616a;">todoItem</span><span>);
+</span><span>  </span><span style="color:#8fa1b3;">callback</span><span>(</span><span style="color:#d08770;">null</span><span>, </span><span style="color:#bf616a;">todoItem</span><span>);
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// Sync gRPC method
+</span><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">readTodos</span><span>(</span><span style="color:#bf616a;">call</span><span>, </span><span style="color:#bf616a;">callback</span><span>) {
+</span><span>  </span><span style="color:#8fa1b3;">callback</span><span>(</span><span style="color:#d08770;">null</span><span>, { items: </span><span style="color:#bf616a;">todos </span><span>});
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;">// Server streaming gRPC method
+</span><span style="color:#b48ead;">function </span><span style="color:#8fa1b3;">readTodosStream</span><span>(</span><span style="color:#bf616a;">call</span><span>) {
+</span><span>  </span><span style="color:#bf616a;">todos</span><span>.</span><span style="color:#96b5b4;">forEach</span><span>((</span><span style="color:#bf616a;">todo</span><span>) </span><span style="color:#b48ead;">=&gt; </span><span>{
+</span><span>    </span><span style="color:#bf616a;">call</span><span>.</span><span style="color:#96b5b4;">write</span><span>(</span><span style="color:#bf616a;">todo</span><span>);
+</span><span>  });
+</span><span>  </span><span style="color:#bf616a;">call</span><span>.</span><span style="color:#8fa1b3;">end</span><span>();
+</span><span>}
+</span></code></pre>
+<p>The <code>todos</code> array acts as in-memory storage for the to-dos.</p>
+<h3 id="key-notes"><a class="zola-anchor" href="#key-notes" aria-label="Anchor link for: key-notes">Key Notes:</a></h3>
+<ul>
+<li>
+<p><strong><code>createTodo</code> method</strong>:</p>
+<ul>
+<li>We access the incoming to-do item via <code>call.request</code>, which is similar to accessing <code>request.body</code> in REST APIs.</li>
+<li>After saving the to-do in the array, we call the callback with the created item.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>readTodos</code> method</strong>:</p>
+<ul>
+<li>This method returns all to-dos at once by invoking the callback with the full list.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>readTodosStream</code> method</strong>:</p>
+<ul>
+<li>We stream each to-do item individually to the client.</li>
+</ul>
+</li>
+</ul>
+<p>Finally, bind the server to a port and start listening:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#bf616a;">server</span><span>.</span><span style="color:#8fa1b3;">bindAsync</span><span>(
+</span><span>  &quot;</span><span style="color:#a3be8c;">0.0.0.0:3000</span><span>&quot;,
+</span><span>  </span><span style="color:#bf616a;">grpc</span><span>.</span><span style="color:#bf616a;">ServerCredentials</span><span>.</span><span style="color:#8fa1b3;">createInsecure</span><span>(),
+</span><span>  () </span><span style="color:#b48ead;">=&gt; </span><span>{
+</span><span>    </span><span style="color:#ebcb8b;">console</span><span>.</span><span style="color:#96b5b4;">log</span><span>(&quot;</span><span style="color:#a3be8c;">Server is listening on port 3000</span><span>&quot;);
+</span><span>  }
+</span><span>);
+</span></code></pre>
+<h2 id="building-the-client"><a class="zola-anchor" href="#building-the-client" aria-label="Anchor link for: building-the-client">Building the Client</a></h2>
+<p>The client setup is similar to the server, so we will skip the repeated steps.</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#b48ead;">import </span><span style="color:#bf616a;">grpc </span><span style="color:#b48ead;">from </span><span>&quot;</span><span style="color:#a3be8c;">@grpc/grpc-js</span><span>&quot;;
+</span><span style="color:#b48ead;">import </span><span style="color:#bf616a;">protoLoader </span><span style="color:#b48ead;">from </span><span>&quot;</span><span style="color:#a3be8c;">@grpc/proto-loader</span><span>&quot;;
+</span><span>
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">packageDef </span><span>= </span><span style="color:#bf616a;">protoLoader</span><span>.</span><span style="color:#8fa1b3;">loadSync</span><span>(&quot;</span><span style="color:#a3be8c;">todo.proto</span><span>&quot;, {});
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">grpcObject </span><span>= </span><span style="color:#bf616a;">grpc</span><span>.</span><span style="color:#8fa1b3;">loadPackageDefinition</span><span>(</span><span style="color:#bf616a;">packageDef</span><span>);
+</span><span>
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">todoPackage </span><span>= </span><span style="color:#bf616a;">grpcObject</span><span>.</span><span style="color:#bf616a;">todoPackage</span><span>;
+</span></code></pre>
+<p>Next, create a new instance of the <code>Todo</code> service and specify the server's address and port:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#b48ead;">const </span><span style="color:#bf616a;">client </span><span>= new todoPackage.Todo(
+</span><span>  &quot;</span><span style="color:#a3be8c;">0.0.0.0:3000</span><span>&quot;,
+</span><span>  </span><span style="color:#bf616a;">grpc</span><span>.</span><span style="color:#bf616a;">credentials</span><span>.</span><span style="color:#8fa1b3;">createInsecure</span><span>()
+</span><span>);
+</span></code></pre>
+<p>To run the client, execute the following command, passing the to-do text as an argument:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">node</span><span> client.js &quot;</span><span style="color:#a3be8c;">Buy some books</span><span>&quot;
+</span></code></pre>
+<p>Inside <code>client.js</code>, access the command-line argument:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#b48ead;">const </span><span style="color:#bf616a;">text </span><span>= process.argv[</span><span style="color:#d08770;">2</span><span>];
+</span></code></pre>
+<p>Then, invoke the gRPC methods:</p>
+<pre data-lang="js" style="background-color:#2b303b;color:#c0c5ce;" class="language-js "><code class="language-js" data-lang="js"><span style="color:#65737e;">// Unary gRPC method
+</span><span style="color:#bf616a;">client</span><span>.</span><span style="color:#8fa1b3;">createTodo</span><span>({ id: -</span><span style="color:#d08770;">1</span><span>, </span><span style="color:#bf616a;">text </span><span>}, (</span><span style="color:#bf616a;">err</span><span>, </span><span style="color:#bf616a;">res</span><span>) </span><span style="color:#b48ead;">=&gt; </span><span>{
+</span><span>  </span><span style="color:#ebcb8b;">console</span><span>.</span><span style="color:#96b5b4;">log</span><span>({
+</span><span>    create: </span><span style="color:#bf616a;">res</span><span>,
+</span><span>  });
+</span><span>});
+</span><span>
+</span><span style="color:#65737e;">// Sync gRPC method
+</span><span style="color:#bf616a;">client</span><span>.</span><span style="color:#8fa1b3;">readTodos</span><span>({}, (</span><span style="color:#bf616a;">err</span><span>, </span><span style="color:#bf616a;">res</span><span>) </span><span style="color:#b48ead;">=&gt; </span><span>{
+</span><span>  </span><span style="color:#bf616a;">res</span><span>.</span><span style="color:#bf616a;">items</span><span>.</span><span style="color:#96b5b4;">forEach</span><span>((</span><span style="color:#bf616a;">item</span><span>) </span><span style="color:#b48ead;">=&gt; </span><span>{
+</span><span>    </span><span style="color:#ebcb8b;">console</span><span>.</span><span style="color:#96b5b4;">log</span><span>(</span><span style="color:#bf616a;">item</span><span>.text);
+</span><span>  });
+</span><span>});
+</span><span>
+</span><span style="color:#65737e;">// Server streaming method
+</span><span style="color:#b48ead;">const </span><span style="color:#bf616a;">call </span><span>= </span><span style="color:#bf616a;">client</span><span>.</span><span style="color:#8fa1b3;">readTodosStream</span><span>();
+</span><span style="color:#bf616a;">call</span><span>.</span><span style="color:#8fa1b3;">on</span><span>(&quot;</span><span style="color:#a3be8c;">data</span><span>&quot;, (</span><span style="color:#bf616a;">item</span><span>) </span><span style="color:#b48ead;">=&gt; </span><span>{
+</span><span>  </span><span style="color:#ebcb8b;">console</span><span>.</span><span style="color:#96b5b4;">log</span><span>(</span><span style="color:#bf616a;">item</span><span>.text);
+</span><span>});
+</span><span style="color:#bf616a;">call</span><span>.</span><span style="color:#8fa1b3;">on</span><span>(&quot;</span><span style="color:#a3be8c;">end</span><span>&quot;, () </span><span style="color:#b48ead;">=&gt; </span><span style="color:#ebcb8b;">console</span><span>.</span><span style="color:#96b5b4;">log</span><span>(&quot;</span><span style="color:#a3be8c;">Server done streaming</span><span>&quot;));
+</span></code></pre>
+<h3 id="explanation-of-calls"><a class="zola-anchor" href="#explanation-of-calls" aria-label="Anchor link for: explanation-of-calls">Explanation of Calls:</a></h3>
+<ul>
+<li>The first call creates a new to-do on the server.</li>
+<li>The second call retrieves all to-dos from the server.</li>
+<li>The third call streams to-dos from the server, with event listeners handling incoming data and the end of the stream.</li>
+</ul>
+<h2 id="running-the-project"><a class="zola-anchor" href="#running-the-project" aria-label="Anchor link for: running-the-project">Running the Project</a></h2>
+<ol>
+<li>In one terminal, start the server:</li>
+</ol>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">node</span><span> server.js
+</span></code></pre>
+<ol start="2">
+<li>In another terminal, run the client multiple times with different to-do texts:</li>
+</ol>
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">node</span><span> client.js &quot;</span><span style="color:#a3be8c;">Buy some books</span><span>&quot;
+</span></code></pre>
+<p>That’s it! Thanks for reading!</p>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+        </section>
+    </article>
+</main>
+
+
+
+        
+            
+        
+
+        
+    </div>
+</body>
+
+</html>
