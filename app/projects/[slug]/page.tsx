@@ -1,7 +1,7 @@
-import posts from "@/content/posts/index.json";
+import projects from "@/content/projects/index.json";
 
 export function generateStaticParams() {
-  return posts.map(({ slug }) => ({
+  return projects.map(({ slug }) => ({
     slug,
   }));
 }
@@ -14,6 +14,6 @@ export default async function Post({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const { default: Post } = await import(`@/content/posts/${slug}.mdx`);
-  return <Post />;
+  const { default: Project } = await import(`@/content/project/${slug}.mdx`);
+  return <Project />;
 }
