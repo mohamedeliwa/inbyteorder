@@ -3,7 +3,7 @@ import posts from "@/content/posts/index.json";
 
 export default function Posts() {
   return (
-    <div className="pt-40">
+    <div className="pt-25">
       <h1 className="text-4xl">
         Posts<span className="text-(--identity-color) text-6xl">.</span>
       </h1>
