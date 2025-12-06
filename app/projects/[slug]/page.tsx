@@ -14,6 +14,6 @@ export default async function Post({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const { default: Project } = await import(`@/content/project/${slug}.mdx`);
+  const { default: Project } = await import(`@/content/projects/${slug}.mdx`);
   return <Project />;
 }
