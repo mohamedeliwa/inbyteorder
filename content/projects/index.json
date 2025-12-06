@@ -1,20 +1,20 @@
 [
   {
-    "slug": "first_post",
+    "slug": "first_project",
     "date": "2025-03-30",
-    "title": "First  Post",
+    "title": "First  project",
     "description": "ForitfyMD is designed to give doctors easy access to practical, everyday medical knowledge and management algorithms for medical,conditions curated by doctors for doctors Enter your email below to"
   },
   {
-    "slug": "second_post",
+    "slug": "second_project",
     "date": "2025-03-30",
-    "title": "Second Post",
+    "title": "Second project",
     "description": "ForitfyMD is designed to give doctors easy access to practical, everyday medical knowledge and management algorithms for medical,conditions curated by doctors for doctors Enter your email below to"
   },
   {
-    "slug": "third_post",
+    "slug": "third_project",
     "date": "2025-03-30",
-    "title": "Third Post",
+    "title": "Third project",
     "description": "ForitfyMD is designed to give doctors easy access to practical, everyday medical knowledge and management algorithms for medical,conditions curated by doctors for doctors Enter your email below to"
   }
 ]
