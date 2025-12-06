@@ -8,14 +8,14 @@ import {
 import Link from "next/link";
 
 interface PostListItemProps {
-  key: string;
+  slug: string;
   title: string;
   description: string;
   date: string;
 }
 
 export default function PostListItem({
-  key,
+  slug,
   title,
   description,
   date,
@@ -27,7 +27,7 @@ export default function PostListItem({
           <CardTitle className="mb-0.5">
             <span className="text-2xl text-(--identity-color)">#</span>{" "}
             <Link
-              href={`/posts/${key}`}
+              href={`/posts/${slug}`}
               className="text-2xl hover:bg-(--identity-color) hover:text-white"
             >
               {title}
@@ -37,7 +37,7 @@ export default function PostListItem({
             {description}
             <br />
             <Link
-              href={`/posts/${key}`}
+              href={`/posts/${slug}`}
               className="border-b-(--identity-color)  border-b-3 hover:bg-(--identity-color) hover:text-white"
             >
               Read more ⟶

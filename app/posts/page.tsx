@@ -1,4 +1,5 @@
 import PostListItem from "@/components/custom/post.list.item";
+import posts from "@/content/posts/index.json";
 
 export default function Posts() {
   return (
@@ -7,31 +8,10 @@ export default function Posts() {
         Posts<span className="text-(--identity-color) text-6xl">.</span>
       </h1>
       <br />
-      {[
-        {
-          key: "first_post",
-          date: "2025-03-30",
-          title: "First Post",
-          description:
-            "ForitfyMD is designed to give doctors easy access to practical, everyday medical knowledge and management algorithms for medical,conditions curated by doctors for doctors Enter your email below to",
-        },
-        {
-          key: "second_post",
-          date: "2025-03-30",
-          title: "Second Post",
-          description:
-            "ForitfyMD is designed to give doctors easy access to practical, everyday medical knowledge and management algorithms for medical,conditions curated by doctors for doctors Enter your email below to",
-        },
-        {
-          key: "third_post",
-          date: "2025-03-30",
-          title: "Third Post",
-          description:
-            "ForitfyMD is designed to give doctors easy access to practical, everyday medical knowledge and management algorithms for medical,conditions curated by doctors for doctors Enter your email below to",
-        },
-      ].map(({ description, date, key, title }) => (
+      {posts.map(({ description, date, slug, title }) => (
         <PostListItem
-          key={key}
+          key={slug}
+          slug={slug}
           title={title}
           date={date}
           description={description}
