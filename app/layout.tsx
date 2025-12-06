@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${jetBrainsMono.className} antialiased`}>
-        <main className="max-w-5xl min-h-dvh  p-6 place-self-center">
+        <main className="w-full max-w-5xl min-h-dvh p-6 place-self-center">
           <Header />
           {children}
         </main>
