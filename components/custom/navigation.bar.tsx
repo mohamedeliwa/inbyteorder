@@ -34,13 +34,13 @@ export function NavigationBar() {
       </NavigationMenuList>
       <NavigationMenuList className="gap-5">
         <NavigationMenuItem className="border-b-(--identity-color)  border-b-3 hover:bg-(--identity-color) hover:text-white">
-          <Link href="/posts">/Posts</Link>
+          <Link href="/posts">/posts</Link>
         </NavigationMenuItem>
         <NavigationMenuItem className="border-b-(--identity-color)  border-b-3 hover:bg-(--identity-color) hover:text-white">
-          <Link href="/projects">/Projects</Link>
+          <Link href="/projects">/projects</Link>
         </NavigationMenuItem>
         <NavigationMenuItem className="border-b-(--identity-color)  border-b-3 hover:bg-(--identity-color) hover:text-white">
-          <Link href="/about">/About</Link>
+          <Link href="/about">/about</Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
