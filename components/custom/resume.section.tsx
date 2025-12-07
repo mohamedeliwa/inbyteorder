@@ -50,9 +50,11 @@ export function ResumeSectionContentList({
   list?: string[];
 }>) {
   return (
-    <ul>
+    <ul className="list-disc text-sm pl-7">
       {list?.map((li) => (
-        <li key={li}>{li}</li>
+        <li className="mt-2 mb-2" key={li}>
+          {li}
+        </li>
       ))}
     </ul>
   );
