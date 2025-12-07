@@ -1,5 +1,6 @@
-- [ ] handle the page for one post
+- [ ] handle the page for one post `in progress..`
 - [ ] move posts data from the old goroji
 - [ ] handle the page for one project
 - [ ] move projects data from the old goroji
 - [ ] review the data in the about page
+- [ ] get the fav icon
