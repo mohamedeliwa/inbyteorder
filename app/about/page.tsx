@@ -26,10 +26,10 @@ export default function About() {
       </h1>
       <br />
       {intro.details?.map((p) => (
-        <>
-          <p key={p}>{p}</p>
+        <span key={p}>
+          <p>{p}</p>
           <br />
-        </>
+        </span>
       ))}
       <br />
       <hr />
