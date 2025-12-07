@@ -34,7 +34,10 @@ export default function About() {
       <br />
       <hr />
       <br />
-      <h1>Professional Experiences</h1>
+      <h1 className="text-2xl font-bold">
+        <span className="text-(--identity-color)">##</span> Professional
+        Experience
+      </h1>
       <br />
       {experiences.map(
         (
@@ -51,7 +54,7 @@ export default function About() {
               channel={channel}
             />
             <ResumeSectionContent>
-              <ResumeSectionContentList list={list} />
+              <ResumeSectionContentList list={list} sm />
             </ResumeSectionContent>
           </ResumeSection>
         ),

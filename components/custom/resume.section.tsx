@@ -3,7 +3,7 @@ export function ResumeSection({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return <div className="mt-2 mb-7">{children}</div>;
 }
 
 export function ResumeSectionHeader({
@@ -26,7 +26,7 @@ export function ResumeSectionHeader({
       <h1>
         <span className="font-bold">{primaryTitle}</span> / {secondaryTitle}
       </h1>
-      <h3 className="text-gray-400 text-sm">
+      <h3 className="text-gray-400 text font-light">
         {from && `${from} - `}
         {to && `${to}, `}
         {where?.length && `${where.join(", ")}${channel ? ", " : ""}`}
@@ -46,11 +46,13 @@ export function ResumeSectionContent({
 
 export function ResumeSectionContentList({
   list,
+  sm,
 }: Readonly<{
   list?: string[];
+  sm?: boolean;
 }>) {
   return (
-    <ul className="list-disc text-sm pl-7">
+    <ul className={`list-disc ${sm ? "text-sm" : "font-light"}  pl-7`}>
       {list?.map((li) => (
         <li className="mt-2 mb-2" key={li}>
           {li}
@@ -68,7 +70,9 @@ export function ResumeSectionContentDetails({
   return (
     <>
       {details?.map((d) => (
-        <p key={d}>{d}</p>
+        <p className="text-sm mt-2 mb-2" key={d}>
+          {d}
+        </p>
       ))}
     </>
   );
