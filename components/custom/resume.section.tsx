@@ -3,7 +3,7 @@ export function ResumeSection({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="mt-2 mb-7">{children}</div>;
+  return <div className="mt-2 mb-10">{children}</div>;
 }
 
 export function ResumeSectionHeader({
