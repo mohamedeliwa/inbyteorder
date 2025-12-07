@@ -1,23 +1,24 @@
 [
   {
-    "primaryTitle": "Postgraduate Medical Fellowship ",
+    "primaryTitle": "Postgraduate Medical Fellowship",
     "secondaryTitle": "The High Committee of Health Specialities",
-    "from": "March 2024",
+    "from": "August 2021",
     "to": "Current",
     "where": ["Egypt"]
   },
   {
-    "primaryTitle": "Postgraduate Medical Fellowship ",
-    "secondaryTitle": "The High Committee of Health Specialities",
-    "from": "March 2024",
-    "to": "Current",
-    "where": ["Egypt"]
+    "primaryTitle": "Bachelor of Medicine and Surgery",
+    "secondaryTitle": "Benha College of Human Medicine",
+    "from": "September 2013",
+    "to": "February 2021",
+    "where": ["Benha", "Egypt"]
   },
   {
-    "primaryTitle": "Postgraduate Medical Fellowship ",
-    "secondaryTitle": "The High Committee of Health Specialities",
-    "from": "March 2024",
-    "to": "Current",
-    "where": ["Egypt"]
+    "primaryTitle": "Full Stack Developer",
+    "secondaryTitle": "freeCodeCamp.org",
+    "from": "December 2018",
+    "to": "May 2020",
+    "where": ["freeCodeCamp.org"],
+    "channel": "ONLINE"
   }
 ]
