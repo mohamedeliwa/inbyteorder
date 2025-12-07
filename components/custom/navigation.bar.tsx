@@ -16,17 +16,17 @@ export function NavigationBar() {
             Goroji
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem className="self-baseline-last">
+        <NavigationMenuItem className="self-baseline-last hover:text-gray-700">
           <Link href="https://linkedin.com" target="_blank">
             <LinkedinRect />
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem className="self-baseline-last">
+        <NavigationMenuItem className="self-baseline-last hover:text-gray-700">
           <Link href="https://github.com" target="_blank">
             <GithubIcon />
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem className="self-baseline-last">
+        <NavigationMenuItem className="self-baseline-last hover:text-gray-700">
           <Link href="mailto:support@goroji.com">
             <BaselineEmailIcon />
           </Link>
