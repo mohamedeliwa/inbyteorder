@@ -59,7 +59,9 @@ export default function About() {
       <br />
       <hr />
       <br />
-      <h1>Education</h1>
+      <h1 className="text-2xl font-bold">
+        <span className="text-(--identity-color)">##</span> Education
+      </h1>
       <br />
       {education.map(
         ({ channel, from, primaryTitle, secondaryTitle, to, where }, i) => (
@@ -78,13 +80,17 @@ export default function About() {
       <br />
       <hr />
       <br />
-      <h1>Skills</h1>
+      <h1 className="text-2xl font-bold">
+        <span className="text-(--identity-color)">##</span> Skills
+      </h1>
       <br />
       <ResumeSectionContentList list={skills.list} />
       <br />
       <hr />
       <br />
-      <h1>Activities</h1>
+      <h1 className="text-2xl font-bold">
+        <span className="text-(--identity-color)">##</span> Activities
+      </h1>
       <br />
       {activities.map(({ details, primaryTitle, secondaryTitle, where }, i) => (
         <ResumeSection key={i}>

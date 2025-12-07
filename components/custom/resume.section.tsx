@@ -24,10 +24,13 @@ export function ResumeSectionHeader({
   return (
     <>
       <h1>
-        {primaryTitle} / {secondaryTitle}
+        <span className="font-bold">{primaryTitle}</span> / {secondaryTitle}
       </h1>
-      <h3>
-        {from} - {to}, {where}, {channel}
+      <h3 className="text-gray-400 text-sm">
+        {from && `${from} - `}
+        {to && `${to}, `}
+        {where?.length && `${where.join(", ")}${channel ? ", " : ""}`}
+        {channel}
       </h3>
     </>
   );
