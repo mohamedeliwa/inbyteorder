@@ -8,31 +8,60 @@
     "channel": "Remote",
     "list": [
       "Developed new UI components and backend services.",
-      "Developed new UI components and backend services."
+      "Designed and Improved Postgresql tables’ structure which lead to less storage, easier logic, and fewer computations.",
+      "Fixed bugs and flaws in the existing code.",
+      "Enhanced performance and state management of the app.",
+      "Enhanced the security of the app by working on the authentication logic and UI components and fixing bugs and flaws in it.",
+      "Built Docker images and used Docker Compose for multi-container environments.",
+      "Implemented CI/CD workflows and configured load balancers and firewalls.",
+      "Conducted code reviews and mentored junior developers."
     ]
   },
   {
-    "primaryTitle": "HAD For Communications & IT",
-    "secondaryTitle": "Senior Full-Stack Engineer",
-    "from": "March 2024",
-    "to": "Current",
-    "where": ["KSA"],
+    "primaryTitle": "Cosdata",
+    "secondaryTitle": "Rust developer",
+    "from": "July 2024",
+    "to": "January 2025",
     "channel": "Remote",
     "list": [
-      "Developed new UI components and backend services.",
-      "Developed new UI components and backend services."
+      "Developed a RESTful API for the database, enhancing functionality and user interaction.",
+      "Leveraged Rust’s strict type system to improve code quality and development experience, significantly reducing the likelihood of bugs associated with loose typing.",
+      "Contributed to the implementation of the Inverted Index feature, optimizing data retrieval and search capabilities within the database."
     ]
   },
   {
-    "primaryTitle": "HAD For Communications & IT",
-    "secondaryTitle": "Senior Full-Stack Engineer",
-    "from": "March 2024",
-    "to": "Current",
-    "where": ["KSA"],
+    "primaryTitle": "Breach Secure Now",
+    "secondaryTitle": "Senior Front-End Developer",
+    "from": "April 2022",
+    "to": "September 2023",
+    "where": ["USA"],
     "channel": "Remote",
     "list": [
-      "Developed new UI components and backend services.",
-      "Developed new UI components and backend services."
+      "Built npm packages for reuse in different internal projects.",
+      "Built new UI components and features.",
+      "Fixed bugs and flaws in the existing code.",
+      "Enhanced performance and state management of the app.",
+      "Enhanced the security of the app by working on the authentication logic and UI components and fixing bugs and flaws in it.",
+      "Reviewed code added by other developers.",
+      "Mentored Junior developers."
+    ]
+  },
+  {
+    "primaryTitle": "E-Butler",
+    "secondaryTitle": "Senior Full-Stack Developer",
+    "from": "January 2021",
+    "to": "April 2022",
+    "where": ["Qatar"],
+    "channel": "Remote",
+    "list": [
+      "Built new UI components and features.",
+      "Fixed bugs and flaws in the existing code.",
+      "Reduced the number of api calls made to the server to the least possible which led to enhanced performance.",
+      "Reduced the amount of data sent in each API call to the least possible making the app mobile data friendly and enhancing performance.",
+      "Used code splitting to send only the code needed by the page to render and work properly which enhanced performance and user experience.",
+      "Improved Mongodb documents’ data models which lead to less storage, easier logic, and fewer computations.",
+      "Reviewed code added by other developers.",
+      "Mentored Junior developers."
     ]
   }
 ]
