@@ -1,46 +1,181 @@
 @reference "../app/globals.css"
 
+/* Main wrapper for markdown content */
 .markdown {
-    @apply p-24;
+    @apply p-6 sm:p-12 md:p-24 max-w-4xl mx-auto;
 }
 
-.markdown h1 {
-    @apply scroll-m-20 text-4xl font-extrabold tracking-tight text-balance;
-}
-.markdown h2 {
-    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0;
-}
-
+/* Styling for all headings (h1, h2, h3) */
+.markdown h1,
+.markdown h2,
 .markdown h3 {
-    @apply scroll-m-20 text-2xl font-semibold tracking-tight;
+    /*@apply font-sans font-extrabold tracking-tight;*/
+    @apply tracking-tight;
+    color: var(--color-heading, #111);
 }
+
+/* Large Heading (h1) */
+.markdown h1 {
+    @apply text-4xl sm:text-5xl mt-10 mb-10;
+    @apply scroll-m-20;
+    font-size: clamp(2.25rem, 6vw, 3rem); /* Responsive font size */
+}
+/* Add symbol "." for h1 */
+.markdown h1::after {
+    content: ".";
+    @apply relative right-0 top-1/2 transform -translate-y-1/2
+        text-(--identity-color) text-5xl sm:text-5xl;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Medium Heading (h2) */
+.markdown h2 {
+    @apply text-3xl mt-8 mb-2;
+    @apply border-b pb-2;
+    @apply scroll-m-20;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    border: none;
+}
+
+/* Add symbol "##" for h2 */
+.markdown h2::before {
+    content: "##";
+    @apply relative left-0 top-1/2 transform -translate-y-1/2 text-(--identity-color) text-3xl;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Small Heading (h3) */
+.markdown h3 {
+    @apply text-2xl mt-6 mb-2;
+    @apply scroll-m-20;
+    font-size: clamp(1.5rem, 3vw, 1.875rem);
+}
+
+/* Add symbol "###" for h3 */
+.markdown h3::before {
+    content: "###";
+    @apply relative left-0 top-1/2 transform -translate-y-1/2 text-(--identity-color) text-2xl;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Paragraphs (p) */
 .markdown p {
-    @apply leading-7 not-first:mt-6;
+    @apply leading-7 mt-6 text-lg;
+    line-height: 1.75;
+    color: var(--color-text, #444);
 }
+
+/* Blockquotes */
 .markdown blockquote {
-    @apply mt-6 border-l-2 pl-6 italic;
-}
-.markdown table {
-    @apply w-full;
-}
-.markdown tr {
-    @apply even:bg-muted m-0 border-t p-0;
-}
-.markdown th {
-    @apply border px-4 py-2 text-left font-bold [[align=center]]:text-center [[align=right]]:text-right;
-}
-.markdown td {
-    @apply border px-4 py-2 text-left [[align=center]]:text-center [[align=right]]:text-right;
+    @apply border-l-4 pl-6 mt-6 italic text-gray-600;
+    border-color: var(--color-border, #d1d5db);
+    margin-left: 1rem;
+    padding-left: 1.5rem;
 }
 
-.markdown ul {
-    @apply my-6 ml-6 list-disc [&>li]:mt-2;
+/* Code blocks inside markdown */
+.markdown pre {
+    @apply bg-[#fafafa] border-[#e6e6e6] border-solid border rounded-lg p-4 mt-6 overflow-x-auto;
+    font-family: "Jetbrains Mono", Courier, monospace;
 }
-
-.markdown ol {
-    @apply my-6 ml-6 list-decimal [&>li]:mt-2;
-}
-
+/* Inline code */
 .markdown code {
-    @apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+    @apply bg-[#fafafa] border-[#e6e6e6] border-solid border rounded px-1 py-0.5 text-lg font-mono;
+}
+
+.markdown pre code {
+    @apply p-0 border-none text-base;
+    color: var(--color-text, #444);
+}
+
+/* Links */
+.markdown a {
+    @apply text-blue-600 hover:text-blue-800 transition-colors;
+    text-decoration: underline;
+}
+
+/* Lists - Unordered lists */
+.markdown ul {
+    @apply my-6 ml-6 list-disc pl-6;
+    color: var(--color-text, #444);
+}
+
+.markdown ul li {
+    @apply mt-2;
+    list-style-type: disc;
+}
+
+/* Lists - Ordered lists */
+.markdown ol {
+    @apply my-6 ml-6 list-decimal pl-6;
+    color: var(--color-text, #444);
+}
+
+.markdown ol li {
+    @apply mt-2;
+    list-style-type: decimal;
+}
+
+/* Tables */
+.markdown table {
+    @apply w-full table-auto mt-6;
+    border-collapse: collapse;
+}
+
+/* Table header */
+.markdown th {
+    @apply bg-gray-100 text-left font-semibold px-4 py-2;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Table cell */
+.markdown td {
+    @apply px-4 py-2 text-left border-t border-b border-gray-200;
+}
+
+/* Table alternating row colors */
+.markdown tr:nth-child(even) {
+    @apply bg-gray-50;
+}
+
+/* Image styling */
+.markdown img {
+    @apply max-w-full h-auto rounded-lg mt-6;
+}
+
+/* Horizontal line */
+.markdown hr {
+    @apply border-t border-gray-300 my-6;
+}
+
+/* Anchor links with a specific focus behavior */
+.markdown a:focus {
+    @apply outline-none ring-2 ring-offset-2 ring-blue-500;
+}
+
+/* Responsive images - allows markdown images to resize within their container */
+.markdown img {
+    @apply max-w-full h-auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .markdown {
+        @apply p-4;
+    }
+
+    .markdown h1 {
+        @apply text-3xl;
+    }
+
+    .markdown h2 {
+        @apply text-2xl;
+    }
+
+    .markdown h3 {
+        @apply text-xl;
+    }
 }
