@@ -1,20 +1,20 @@
 [
   {
-    "slug": "first_post",
+    "slug": "fortifymd",
     "date": "2025-03-30",
-    "title": "First  Post",
-    "description": "ForitfyMD is designed to give doctors easy access to practical, everyday medical knowledge and management algorithms for medical,conditions curated by doctors for doctors Enter your email below to"
+    "title": "FortifyMD",
+    "description": "ForitfyMD is designed to give doctors easy access to practical, everyday medical knowledge and management algorithms for medical conditions curated by doctors for doctors"
   },
   {
-    "slug": "second_post",
-    "date": "2025-03-30",
-    "title": "Second Post",
-    "description": "ForitfyMD is designed to give doctors easy access to practical, everyday medical knowledge and management algorithms for medical,conditions curated by doctors for doctors Enter your email below to"
+    "slug": "how_to_use_sqlx_sqlite_with_tauri_rust_side",
+    "date": "2025-03-03",
+    "title": "How to use SQLX (SQLite) with Tauri (Rust side)",
+    "description": "How to install SQLx with the SQLite feature and use it with Tauri, focusing on the Rust side."
   },
   {
-    "slug": "third_post",
-    "date": "2025-03-30",
-    "title": "Third Post",
-    "description": "ForitfyMD is designed to give doctors easy access to practical, everyday medical knowledge and management algorithms for medical,conditions curated by doctors for doctors Enter your email below to"
+    "slug": "build_a_todo_app_with_grpc_protocol_in_nodejs",
+    "date": "2025-02-26",
+    "title": "Build a todo app with gRPC in Nodejs",
+    "description": "a todo app (server, client) built with gRPC protocol in Nodejs"
   }
 ]
